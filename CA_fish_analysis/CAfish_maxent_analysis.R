@@ -3,12 +3,12 @@
 ##########################################################################################
 #                        MaxEntAnalyzer Rscript v1.0, April 2017                         #
 #  Copyright (c)2017 Justinc C. Bagley, Virginia Commonwealth University, Richmond, VA,  #
-#  USA; Universidade de Brasília, Brasília, DF, Brazil. See README and license on GitHub #
+#  USA; Universidade de Bras√≠lia, Bras√≠lia, DF, Brazil. See README and license on GitHub #
 #  (https://github.com/justincbagley) for further information. Last update: April 27,    #
 #  2017. For questions, please email jcbagley@vcu.edu.                                   #
 #
 #  This script was developed by JCB based on a MaxEnt script that was originally written #
-#  by Pietro Mello and Leonardo Gonçalves Tedeschi. JCB translated this code to English, #
+#  by Pietro Mello and Leonardo Gon√ßalves Tedeschi. JCB translated this code to English, #
 #  added new code for ENMeval, and changed the analysis of the threshold value.          #
 ##########################################################################################
 
@@ -115,7 +115,7 @@ plot(sp1)
 ### II. Clip the layers and plot the occurrence points for this species:
 ##--Geographically resize/cut the map, where o = east, l = west, s = south, n = north; shape =
 ##--map that will be utilized.
-plot(CA2,xlim=c(-1500000,500000),ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
+plot(CA2, xlim=c(-1500000,500000), ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
 title (main = "Presence points for Alfaro cultratus")
 
 ##--Plot the observed points:
@@ -245,7 +245,7 @@ plot(sp2)
 ### II. Clip the layers and plot the occurrence points for this species:
 ##--Geographically resize/cut the map, where o = east, l = west, s = south, n = north; shape =
 ##--map that will be utilized.
-plot(CA2,xlim=c(-1500000,500000),ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
+plot(CA2, xlim=c(-1500000,500000), ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
 title (main = "Presence points for Amatitlania spp.")
 
 ##--Plot the observed points:
@@ -365,7 +365,7 @@ plot(sp3)
 ### II. Clip the layers and plot the occurrence points for this species:
 ##--Geographically resize/cut the map, where o = east, l = west, s = south, n = north; shape =
 ##--map that will be utilized.
-plot(CA2,xlim=c(-1500000,500000),ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
+plot(CA2, xlim=c(-1500000,500000), ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
 title (main = "Presence points for Astyanax spp.")
 
 ##--Plot the observed points:
@@ -485,7 +485,7 @@ plot(sp4)
 ### II. Clip the layers and plot the occurrence points for this species:
 ##--Geographically resize/cut the map, where o = east, l = west, s = south, n = north; shape =
 ##--map that will be utilized.
-plot(CA2,xlim=c(-1500000,500000),ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
+plot(CA2, xlim=c(-1500000,500000), ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
 title (main = "Presence points for Phallichthys amates")
 
 ##--Plot the observed points:
@@ -607,7 +607,7 @@ plot(sp5)
 ### II. Clip the layers and plot the occurrence points for this species:
 ##--Geographically resize/cut the map, where o = east, l = west, s = south, n = north; shape =
 ##--map that will be utilized.
-plot(CA2,xlim=c(-1500000,500000),ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
+plot(CA2, xlim=c(-1500000,500000), ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
 title (main = "Presence points for Poecilia mexicana")
 
 ##--Plot the observed points:
@@ -623,7 +623,7 @@ pres_train <- sp5[group != 1, ]		## Training data
 pres_test <- sp5[group == 1, ]		## Testing data
 
 ## Como ja feito anteriormente, para definir o tamanho da area de predicao
-##para melhora a velocidade de processamento ext = extent(W,E,S,N)coordenadas dos vertices do retangulo
+## para melhora a velocidade de processamento ext = extent(W,E,S,N) coordenadas dos vertices do retangulo
 
 ###  IV. RUN MAXENT. ### 
 system.file("java", package="dismo")
@@ -727,7 +727,7 @@ plot(sp6)
 ### II. Clip the layers and plot the occurrence points for this species:
 ##--Geographically resize/cut the map, where o = east, l = west, s = south, n = north; shape =
 ##--map that will be utilized.
-plot(CA2,xlim=c(-1500000,500000),ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
+plot(CA2, xlim=c(-1500000,500000), ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
 title (main = "Presence points for Priapichthys annectens")
 
 ##--Plot the observed points:
@@ -743,7 +743,7 @@ pres_train <- sp6[group != 1, ]		## Training data
 pres_test <- sp6[group == 1, ]		## Testing data
 
 ## Como ja feito anteriormente, para definir o tamanho da area de predicao
-##para melhora a velocidade de processamento ext = extent(W,E,S,N)coordenadas dos vertices do retangulo
+## para melhora a velocidade de processamento ext = extent(W,E,S,N)coordenadas dos vertices do retangulo
 
 ###  IV. RUN MAXENT. ### 
 system.file("java", package="dismo")
@@ -847,7 +847,7 @@ plot(sp7)
 ### II. Clip the layers and plot the occurrence points for this species:
 ##--Geographically resize/cut the map, where o = east, l = west, s = south, n = north; shape =
 ##--map that will be utilized.
-plot(CA2,xlim=c(-1500000,500000),ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
+plot(CA2, xlim=c(-1500000,500000), ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
 title (main = "Presence points for Roeboides bouchellei")
 
 ##--Plot the observed points:
@@ -863,7 +863,7 @@ pres_train <- sp7[group != 1, ]		## Training data
 pres_test <- sp7[group == 1, ]		## Testing data
 
 ## Como ja feito anteriormente, para definir o tamanho da area de predicao
-##para melhora a velocidade de processamento ext = extent(W,E,S,N)coordenadas dos vertices do retangulo
+## para melhora a velocidade de processamento ext = extent(W,E,S,N)coordenadas dos vertices do retangulo
 
 ###  IV. RUN MAXENT. ### 
 system.file("java", package="dismo")
@@ -966,7 +966,7 @@ plot(sp8)
 ### II. Clip the layers and plot the occurrence points for this species:
 ##--Geographically resize/cut the map, where o = east, l = west, s = south, n = north; shape =
 ##--map that will be utilized.
-plot(CA2,xlim=c(-1500000,500000),ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
+plot(CA2, xlim=c(-1500000,500000), ylim=c(500000,3000000), main= "", bty="o", axes=TRUE, col="lightgreen")
 title (main = "Presence points for Xenophallus umbratilis")
 
 ##--Plot the observed data points:
@@ -982,7 +982,7 @@ pres_train <- sp8[group != 1, ]		## Training data
 pres_test <- sp8[group == 1, ]		## Testing data
 
 ## Como ja feito anteriormente, para definir o tamanho da area de predicao
-##para melhora a velocidade de processamento ext = extent(W,E,S,N)coordenadas dos vertices do retangulo
+## para melhora a velocidade de processamento ext = extent(W,E,S,N)coordenadas dos vertices do retangulo
 
 ###  IV. RUN MAXENT. ### 
 system.file("java", package="dismo")
@@ -1078,7 +1078,7 @@ plot(stability.XU)
 #Todas as especies
 #areas de estabilidade
 ######
-#soprepor os 3 modelos de presenÁa e ausencia
+#soprepor os 3 modelos de presen√ßa e ausencia
 
 modelos <- stack(estab.AC, estab.AM, estab.AS, estab.PA, estab.PM, estab.PR, estab.RB, estab.XU)
 estab <- sum(modelos)

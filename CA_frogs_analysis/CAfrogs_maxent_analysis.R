@@ -3,12 +3,12 @@
 ##########################################################################################
 #                        MaxEntAnalyzer Rscript v1.0, April 2017                         #
 #  Copyright (c)2017 Justinc C. Bagley, Virginia Commonwealth University, Richmond, VA,  #
-#  USA; Universidade de Brasília, Brasília, DF, Brazil. See README and license on GitHub #
+#  USA; Universidade de Bras√≠lia, Bras√≠lia, DF, Brazil. See README and license on GitHub #
 #  (https://github.com/justincbagley) for further information. Last update: April 27,    #
 #  2017. For questions, please email jcbagley@vcu.edu.                                   #
 #
 #  This script was developed by JCB based on a MaxEnt script that was originally written #
-#  by Pietro Mello and Leonardo Gonçalves Tedeschi. JCB translated this code to English, #
+#  by Pietro Mello and Leonardo Gon√ßalves Tedeschi. JCB translated this code to English, #
 #  added new code for ENMeval, and changed the analysis of the threshold value.          #
 ##########################################################################################
 
@@ -23,8 +23,6 @@
 ##--are in current working dir. Layers also assumed to have 0.3 arc-min (=1 degree) resolution.
 
 setwd("./")
-
-#rm(list=ls())	## Uncomment this line to clear the workspace when this script is sourced.
 
 ##--Load needed library, R code, or package stuff. Install package if not present.
 #source('MaxEntAnalyzer.R', chdir = TRUE)
@@ -1078,7 +1076,7 @@ plot(stability.XU)
 #Todas as especies
 #areas de estabilidade
 ######
-#soprepor os 3 modelos de presenÁa e ausencia
+#soprepor os 3 modelos de presen√ßa e ausencia
 
 modelos <- stack(estab.AC, estab.AM, estab.AS, estab.PA, estab.PM, estab.PR, estab.RB, estab.XU)
 estab <- sum(modelos)

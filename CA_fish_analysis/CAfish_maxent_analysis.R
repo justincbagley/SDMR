@@ -52,7 +52,8 @@ bioclim.vars <- list.files(path = paste(system.file(package = "dismo"),'/ex/wc0.
 bioclim.vars <- stack(bioclim.vars)
 bioclim.vars.crop <- crop(bioclim.vars, ext)
 bioclim.vars.LAEA <- projectRaster(bioclim.vars.crop, crs=crs.laea)
-plot(bioclim.vars.LAEA$bio_1)
+## JCB: I'm commenting this out, because I think it should be as on newline below:  plot(bioclim.vars.LAEA$bio_1)
+plot(bioclim.vars.LAEA[[1]], main=names(bioclim.vars.LAEA )[1])
 
 ##--Load paleoenvironmental data layers for the LGM:
 paleo.LGM <- list.files(path = paste(system.file(package = "dismo"),'/ex/LGM', sep = ''), pattern = 'tif', full.names = TRUE)

@@ -1074,20 +1074,19 @@ plot(stability.XU)
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@ COMBINED SPECIES/LINEAGE ANALYSES @@@@@@@@@@@@@@@@@@@@@@@@@@@#
 
-######
-#Todas as especies
-#areas de estabilidade
-######
-#soprepor os 3 modelos de presença e ausencia
-
-modelos <- stack(estab.AC, estab.AM, estab.AS, estab.PA, estab.PM, estab.PR, estab.RB, estab.XU)
-estab <- sum(modelos)
-modelos1 <- stack(estab.AC, estab.AM, estab.AS)
-modelos2 <- stack(estab.PA, estab.PM, estab.PR)
-modelos3 <- stack(estab.RB, estab.XU, estab)
-plot(modelos1)
-plot(modelos2)
-plot(modelos3)
+##########################################################################################
+#                     ***  Map stability areas for ALL species  ***                      #
+##########################################################################################
+##--Superimposes the 3 presence-absence models for each species and plots a stability map.
+models <- stack(estab.AC, estab.AM, estab.AS, estab.PA, estab.PM, estab.PR, estab.RB, estab.XU)
+stability <- sum(models)
+row1_3mods <- stack(estab.AC, estab.AM, estab.AS)
+row2_3mods <- stack(estab.PA, estab.PM, estab.PR)
+row3_2mod_stab <- stack(estab.RB, estab.XU, stability)
+plot(row1_3mods)
+plot(row2_3mods)
+plot(row3_2mod_stab)
+#
 plot(estab.AC)
 plot(estab.AM)
 plot(estab.AS)
@@ -1096,178 +1095,126 @@ plot(estab.PM)
 plot(estab.PR)
 plot(estab.RB)
 plot(estab.XU)
-plot(estab)
+plot(stability)
 
 
-
-####################
-Testes
-####################
-
-#####################################################
-
-# carregar arquivo de dados
-specie<-read.table("species.txt",h=T)
-head(specie)
-summary(specie)
-tail(specie)
-coordinates(specie) <- ~lon+lat
-proj4string(specie) <- CRS("+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs")
-specie <- spTransform(specie, CRS=crs.laea)
-class(specie)
-head(specie)
-plot(specie)
+## NOTE: Add graphics.off(), pdf(), and dev.off() code to previous section saving graphical output to file.
 
 
-#################################################
+##########################################################################################
+#                    ***  TEST: ANALYSIS of data from ALL species  ***                   #
+##########################################################################################
+##--Testing what result we would get if we build a series of 3 MaxEnt models from a combined
+##--file including occurrence points for all 8 species/lineages modeled above this section.
 
-# Recorte geografico do mapa, no qual o= oeste, l=leste, s= sul, n= norte
-# shape= mapa a ser utilizado
-plot(CA2,xlim=c(-1500000,500000),ylim=c(500000,3000000), main= "", bty="o", axes=TRUE,col="lightgreen")
-title (main = "Pontos de presenca para especie'x'")
+### I. Load species occurrences input data file:
+allSpp <- read.table("species.txt", h=T)
+head(allSpp)
+summary(allSpp)
+tail(allSpp)
+coordinates(allSpp) <- ~lon+lat
+proj4string(allSpp) <- CRS("+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs")
+allSpp <- spTransform(allSpp, CRS=crs.laea)
+class(allSpp)
+head(allSpp)
+plot(allSpp)
 
-# plotar pontos
-points(specie$lon, specie$lat, col='blue', pch=20, cex=0.75)
+##--Plot the observed data points:
+points(allSpp$lon, allSpp$lat, col='blue', pch=20, cex=0.75)
 
-# se quiser pode destacar ponto com contorno
-points(specie$lon, specie$lat, col='red', cex=0.75)
+##--If you want, you can highlight the points by making them red in color:
+points(allSpp$lon, allSpp$lat, col='red', cex=0.75)
 
-######################################################
-#*********************MODELAGEM**********************# 
-######################################################
-
-# Mantem-se apenas lon e lat
-especie <- specie [,2:3]
-
-
-# Para dividir em test e training data, baseado em Heuberty(1994)
-# dividir em dados de treino e teste
-group <- kfold(especie, k=5)
-# treino
-pres_train <- specie[group != 1, ]
-# teste
-pres_test <- specie[group == 1, ]
+### III. Prepare testing and training data for MaxEnt:
+##--Here, we divide the data points into testing and training data, based on Heuberty (1994):
+group <- kfold(allSpp, k=5)
+pres_train <- allSpp[group != 1, ]		## Training data
+pres_test <- allSpp[group == 1, ]		## Testing data
 
 ## Como ja feito anteriormente, para definir o tamanho da area de predicao
-##para melhora a velocidade de processamento ext = extent(W,E,S,N)coordenadas dos vertices do retangulo
+## para melhora a velocidade de processamento ext = extent(W,E,S,N)coordenadas dos vertices do retangulo
 
-############################################################################
-# para Maxent, com condicional que o programa esta corretamente instalado###
-############################################################################
-
+###  IV. RUN MAXENT. ### 
 system.file("java", package="dismo")
 jar <- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
 if (file.exists(jar)) {
-mx <- maxent(bioclim.vars.CA, pres_train, args=c("-J","-r"), path= "C:/Users/leonardo/Desktop/Maxent/especie'x'")
-# Nos quais "-J" indica o uso de Jackknife method, "r" para perguntar se deseja fazer "overwrite" dos dados, caso ja existam
-plot(mx, xlab="Percentage of contribution", ylab="Abiotic variable")
+	mx.allSpp <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "C:/Users/leonardo/Desktop/Maxent/modelresult/All species/present")
+	## Here, -J calls Jackknife method, -r asks if you want to 'overwrite' previous/existing results files
+	plot(mx.allSpp, xlab="Percentage of contribution", ylab="Abiotic variable")
 }
 
-# background data
-bg <- randomPoints(bioclim.vars.CA, n=10000, ext=CA2, extf = 1.25)
+##--Background data points:
+bg <- randomPoints(bioclim.vars.CA, n=10000, ext=CA2, extf=1.25)
 
 if (file.exists(jar)) {
-pvtest <- data.frame(extract(bioclim.vars.CA, pres_test))
-avtest <- data.frame(extract(bioclim.vars.CA, bg))
-testp <- predict(mx, pvtest) 
-testa <- predict(mx, avtest) 
-e <- evaluate(p=testp, a=testa, bioclim.vars.CA)
-e
-px = predict(mx, bioclim.vars.CA, ext=ext2, progress='',  filename="C:/Users/leonardo/Desktop/Maxent/especie'x'")
-plot(px, main='Maxent, raw values,especie', bty="o")
+	pvtest <- data.frame(extract(bioclim.vars.CA, pres_test))
+	avtest <- data.frame(extract(bioclim.vars.CA, bg))
+	testp <- predict(mx.allSpp, pvtest) 
+	testa <- predict(mx.allSpp, avtest) 
+	e <- evaluate(p=testp, a=testa, bioclim.vars.CA)
+	e
+	px.allSpp = predict(mx.allSpp, bioclim.vars.CA, overwrite=TRUE, ext=ext2, progress='',  
+	filename="C:/Users/leonardo/Desktop/Maxent/modelresult/All species/present")
+#
+	plot(px.allSpp, main='Maxent, raw values, all species', bty="o")
 }
 
 if (file.exists(jar)) {
-# SSSmax foi o metodo que varia menos a reamostragem das pseudo-ausencia, sendo um threshold mais constante (Liu et al.,2013)
-threshold <- e@t[which.max(e@TPR + e@TNR)]
-pre_abs <- px > threshold
-plot(pre_abs, main="Presence/absence-SSSmax, especie")
-plot(CA2, add=TRUE, border='dark grey')
-points(pres_train, pch='+')
-} else {
-plot(1)
+	## SSSmax method (Liu et al., 2013):
+	threshold.allSpp <- e@t[which.max(e@TPR + e@TNR)]
+	pre_abs.allSpp <- px.allSpp > threshold.allSpp
+	plot(pre_abs.allSpp, main="Presence/absence-SSSmax, all species")
+	plot(CA, add=TRUE, border='dark grey')
+	points(pres_train, pch='+')} else { plot(1)
 }
 
 # para plotar ROC 
 threshold(e)
-plot(e, 'ROC', main= "ROC plot", sub= "especie'x'",bty="o")
+plot(e, 'ROC', main = "ROC plot", sub = "All species", bty="o")
 
 LGM
-if (file.exists(jar)) {
-mx.LGM <- BIOMOD_Modeling(paleo.LGM.CA, models = c('MAXENT'),
-pres_train, args=c("-J","-r"), path= "C:/Users/leonardo/Desktop/Maxent/especie'x'/LGM")
-
-mx.LGM <- maxent(paleo.LGM.CA, pres_train, args=c("-J","-r"), path= "C:/Users/leonardo/Desktop/Maxent/especie'x'/LGM")
-# Nos quais "-J" indica o uso de Jackknife method, "r" para perguntar se deseja fazer "overwrite" dos dados, caso ja existam
-mx.LGM.proj <- BIOMOD_Projection(modeling.output = mx.LGM, new.env = bioclim.vars.CA,
-proj.name = 'geral.LGM', selected.models = 'all', binary.meth = 'TSS', 
-compress = FALSE, build.clamping.mask = TRUE)
-plot(mx, xlab="Percentage of contribution", ylab="Abiotic variable")
-}
-
-# background data
-bg <- randomPoints(paleo.LGM.CA, n=10000, ext=CA2, extf = 1.25)
+px.LGM.allSpp <- predict(mx.allSpp, paleo.LGM.CA, overwrite=TRUE, type="prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/All species/LGM")
+plot(px.LGM.allSpp, main='Maxent, raw values, all species', bty="o")
 
 if (file.exists(jar)) {
-pvtest <- data.frame(extract(paleo.LGM.CA, pres_test))
-avtest <- data.frame(extract(paleo.LGM.CA, bg))
-testp <- predict(mx.LGM, pvtest) 
-testa <- predict(mx.LGM, avtest) 
-e <- evaluate(p=testp, a=testa, paleo.LGM.CA)
-e
-px.LGM = predict(mx.LGM, paleo.LGM.CA, verwrite=TRUE, ext=bioclim.vars.CA, progress='', filename="C:/Users/leonardo/Desktop/Maxent/especie'x'/LGM")
-plot(px.LGM, main='Maxent, raw values,especie', bty="o")
+	## SSSmax method (Liu et al., 2013):
+	e <- evaluate(p=testp, a=testa, paleo.LGM.CA)
+	threshold.LGM.allSpp <- e@t[which.max(e@TPR + e@TNR)]
+	pre_abs.LGM.allSpp <- px.LGM.allSpp > threshold.LGM.allSpp
+	plot(pre_abs.LGM.allSpp, main="Presence/absence-SSSmax, all species")
+	plot(CA, add=TRUE, border='dark grey')
+	points(pres_train, pch='+')} else { plot(1)
 }
-
-if (file.exists(jar)) {
-# SSSmax foi o metodo que varia menos a reamostragem das pseudo-ausencia, sendo um threshold mais constante (Liu et al.,2013)
-threshold.LGM <- e@t[which.max(e@TPR + e@TNR)]
-pre_abs.LGM <- px.LGM > threshold.LGM
-plot(pre_abs.LGM, main="Presence/absence-SSSmax, especie'x'")
-plot(CA, add=TRUE, border='dark grey')
-points(pres_train, pch='+')
-} else {
-plot(1)
-}
-
-# para plotar ROC 
-threshold(e)
-plot(e, 'ROC', main= "ROC plot", sub= "especie'x'",bty="o")
 
 LIG
-if (file.exists(jar)) {
-mx.LIG <- maxent(paleo.LIG.CA, pres_train, args=c("-J","-r"), path= "C:/Users/leonardo/Desktop/Maxent/especie'x'")
-# Nos quais "-J" indica o uso de Jackknife method, "r" para perguntar se deseja fazer "overwrite" dos dados, caso ja existam
-plot(mx, xlab="Percentage of contribution", ylab="Abiotic variable")
-}
+px.LIG.allSpp = predict(mx.allSpp, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/All species/LIG")
+plot(px.LIG.allSpp, main='Maxent, raw values, all species', bty="o")
 
-# background data
-bg <- randomPoints(paleo.LIG.CA, n=10000, ext=CA, extf = 1.25)
 
 if (file.exists(jar)) {
-pvtest <- data.frame(extract(paleo.LIG.CA, pres_test))
-avtest <- data.frame(extract(paleo.LIG.CA, bg))
-testp <- predict(mx.LIG, pvtest) 
-testa <- predict(mx.LIG, avtest) 
-e <- evaluate(p=testp, a=testa, paleo.LIG.CA)
-e
-px.LIG = predict(mx.LIG, paleo.LIG.CA, overwrite=TRUE, ext=bioclim.vars.CA, progress='', filename="C:/Users/leonardo/Desktop/Maxent/especie'x'/LIG")
-plot(px.LIG, main='Maxent, raw values,especie', bty="o")
+	## SSSmax method (Liu et al., 2013):
+	e <- evaluate(p=testp, a=testa, paleo.LIG.CA)
+	threshold.LIG.allSpp <- e@t[which.max(e@TPR + e@TNR)]
+	pre_abs.LIG.allSpp <- px.LIG.allSpp > threshold.LIG.allSpp
+	plot(pre_abs.LIG.allSpp, main="Presence/absence-SSSmax, all species")
+	plot(CA, add=TRUE, border='dark grey')
+	points(pres_train, pch='+')} else { plot(1)
 }
 
-if (file.exists(jar)) {
-# SSSmax foi o metodo que varia menos a reamostragem das pseudo-ausencia, sendo um threshold mais constante (Liu et al.,2013)
-threshold.LIG <- e@t[which.max(e@TPR + e@TNR)]
-pre_abs.LIG <- px.LIG > threshold.LIG
-plot(pre_abs.LIG, main="Presence/absence-SSSmax, especie'x'")
-plot(CA, add=TRUE, border='dark grey')
-points(pres_train, pch='+')
-} else {
-plot(1)
-}
+######
+# Models
+######
+models.allSpp <- stack(px.allSpp, px.LGM.allSpp, px.LIG.allSpp)
+plot(models.allSpp)
 
-# para plotar ROC 
-threshold(e)
-plot(e, 'ROC', main= "ROC plot", sub= "especie'x'",bty="o")
+######
+# Stability areas
+######
+##--Superimpose the three models from presence-absence data, to create plots of stability
+##--areas for Amatitlania spp., across the three time slices modeled (present, LGM, LIG).
+presence.allSpp <- stack(pre_abs.allSpp, pre_abs.LGM.allSpp, pre_abs.LIG.allSpp)
+stability.allSpp <- sum(presence.allSpp)
+plot(stability.allSpp)
+
 
 ######################################### END ############################################

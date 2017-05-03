@@ -48,7 +48,7 @@ ext2 <- extent(-1500000,300000,500000,25000000)
 ##--and Graham, 2007):
 crs.laea <- CRS("+proj=laea +lat_0=0 +lon_0=-80 +ellps=WGS84 +units=m +no_defs")
 
-bioclim.vars <- list.files(path = paste(system.file(package = "dismo"),'/ex/wc0.5', sep = ''), pattern = 'bil', full.names = TRUE)
+bioclim.vars <- list.files(path = paste(system.file(package = "dismo"),'/ex/wc0.5', sep = ''), pattern = 'bil', full.names = TRUE)   ## NOTE: You may need to change this from pattern='bil' to pattern='grd' to get it to work.
 bioclim.vars <- stack(bioclim.vars)
 bioclim.vars.crop <- crop(bioclim.vars, ext)
 bioclim.vars.LAEA <- projectRaster(bioclim.vars.crop, crs=crs.laea)

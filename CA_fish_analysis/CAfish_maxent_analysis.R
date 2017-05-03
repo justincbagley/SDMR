@@ -22,22 +22,20 @@
 ##--This script assumes that bioclimatic data layers have been downloaded and prepped and
 ##--are in current working dir. Layers also assumed to have 0.3 arc-min (=1 degree) resolution.
 
-setwd("./")
+setwd("~/PATH/TO/ANALYSIS/FOLDER/")
 
-#rm(list=ls())	## Uncomment this line to clear the workspace when this script is sourced.
+#rm(list=ls())	## Not run. Uncomment this line to clear the workspace when this script is sourced.
 
 ##--Load needed library, R code, or package stuff. Install package if not present.
 #source('MaxEntAnalyzer.R', chdir = TRUE)
-packages <- c('sp', 'grid', 'lattice', 'ape', 'raster', 'maptools', 'phyloclim', 'dismo','rJava','rgdal')
+packages <- c('sp', 'grid', 'lattice', 'ape', 'raster', 'maptools', 'phyloclim', 'dismo', 'rJava', 'rgdal', 'spocc', 'ENMeval')
 if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
     install.packages(setdiff(packages, rownames(installed.packages())))
 }
 
-library(maptools) # Loads dependencies sp, grid, and lattice.
-library(phyloclim) # Loads dependencies ape and raster.
-library(dismo)
-library(rgdal)
-library(rJava)
+library(sp); library(grid); library(lattice); library(maptools); library(phyloclim) # Loads dependencies ape and raster.
+library(dismo); library(rgdal); library(rJava);
+library(spocc); library(ENMeval);
 Maxent
 
 ###### DEFINE EXTENT OF STUDY AREA TO BE MODELED, AND LOAD GIS DATA LAYERS.

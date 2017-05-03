@@ -135,7 +135,7 @@ system.file("java", package="dismo")
 jar <- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
 if (file.exists(jar)) {
 	mx.AC <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), 
-	path= "C:/Users/leonardo/Desktop/Maxent/modelresult/Alfaro cultratus/present")
+	path= "~/PATH/TO/Alfaro\_cultratus/present/")
 	## Here, -J calls Jackknife method, -r asks if you want to 'overwrite' previous/existing results files
 	plot(mx.AC, xlab="Percentage of contribution", ylab="Abiotic variable")
 }
@@ -151,9 +151,9 @@ if (file.exists(jar)) {
 	e <- evaluate(p=testp, a=testa, bioclim.vars.CA)
 	e
 	px.AC = predict(mx.AC, bioclim.vars.CA, ext=ext2, overwrite=TRUE, progress='',  
-	filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Alfaro cultratus/present")
+	filename="~/PATH/TO/Alfaro\_cultratus/present")
 #
-	plot(px.AC, main='Maxent, raw values,Alfaro cultratus', bty="o")
+	plot(px.AC, main='Maxent, raw values, Alfaro cultratus', bty="o")
 }
 
 if (file.exists(jar)) {
@@ -172,7 +172,7 @@ plot(e, 'ROC', main= "ROC plot", sub= "Alfaro cultratus", bty="o")
 
 ## LGM ##
 px.LGM.AC <- predict(mx.AC, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', 
-filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Alfaro cultratus/LGM")
+filename="~/PATH/TO/Alfaro\_cultratus/LGM")
 #
 plot(px.LGM.AC, main='Maxent, raw values, Alfaro cultratus', bty="o")
 scalebar(1500, xy = c(0,-500000), type = 'bar', divs = 2, below = "km")
@@ -280,9 +280,9 @@ if (file.exists(jar)) {
 	e <- evaluate(p=testp, a=testa, bioclim.vars.CA)
 	e
 	px.AM = predict(mx.AM, bioclim.vars.CA, ext=ext2, progress='', overwrite=TRUE, 
-	filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Amatitlania spp/present")
+	filename="~/PATH/TO/Amatitlania\_spp/present")
 #
-	plot(px.AM, main='Maxent, raw values,Amatitlania spp', bty="o")
+	plot(px.AM, main='Maxent, raw values, Amatitlania spp', bty="o")
 }
 
 if (file.exists(jar)) {
@@ -297,11 +297,11 @@ if (file.exists(jar)) {
 
 # para plotar ROC 
 threshold(e)
-plot(e, 'ROC', main= "ROC plot", sub= "Amatitlania spp",bty="o")
+plot(e, 'ROC', main= "ROC plot", sub= "Amatitlania spp", bty="o")
 
 LGM
 px.LGM.AM <- predict(mx.AM, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Amatitlania spp/LGM")
-plot(px.LGM.AM, main='Maxent, raw values,Amatitlania spp', bty="o")
+plot(px.LGM.AM, main='Maxent, raw values, Amatitlania spp', bty="o")
 
 if (file.exists(jar)) {
 	## SSSmax was the method that varies the resampling of pseudo-absence (points) less, 
@@ -315,7 +315,7 @@ if (file.exists(jar)) {
 
 LIG
 px.LIG.AM = predict(mx.AM, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Amatitlania spp/LIG")
-plot(px.LIG.AM, main='Maxent, raw values,Amatitlania spp', bty="o")
+plot(px.LIG.AM, main='Maxent, raw values, Amatitlania spp', bty="o")
 
 
 if (file.exists(jar)) {
@@ -400,7 +400,7 @@ if (file.exists(jar)) {
 	e <- evaluate(p=testp, a=testa, bioclim.vars.CA)
 	e
 	px.AS = predict(mx.AS, bioclim.vars.CA, ext=ext2, overwrite=TRUE, progress='', 
-	filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Astyanax spp/present")
+	filename="~/PATH/TO/Astyanax\_spp/present")
 #
 	plot(px.AS, main='Maxent, raw values,Astyanax spp', bty="o")
 }
@@ -417,7 +417,7 @@ if (file.exists(jar)) {
 
 # para plotar ROC 
 threshold(e)
-plot(e, 'ROC', main= "ROC plot", sub= "Astyanax spp",bty="o")
+plot(e, 'ROC', main= "ROC plot", sub= "Astyanax spp", bty="o")
 
 LGM
 px.LGM.AS <- predict(mx.AS, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Astyanax spp/LGM")
@@ -520,9 +520,9 @@ if (file.exists(jar)) {
 	e <- evaluate(p=testp, a=testa, bioclim.vars.CA)
 	e
 	px.PA = predict(mx.PA, bioclim.vars.CA, ext=ext2, overwrite=TRUE, progress='',  
-	filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Phallichthys amates/present")
+	filename="~/PATH/TO/Phallichthys\_amates/present")
 #
-	plot(px.PA, main='Maxent, raw values,Phallichthys amates', bty="o")
+	plot(px.PA, main='Maxent, raw values, Phallichthys amates', bty="o")
 }
 
 if (file.exists(jar)) {
@@ -537,11 +537,11 @@ if (file.exists(jar)) {
 
 # para plotar ROC 
 threshold(e)
-plot(e, 'ROC', main= "ROC plot", sub= "Phallichthys amates",bty="o")
+plot(e, 'ROC', main= "ROC plot", sub="Phallichthys amates", bty="o")
 
 LGM
 px.LGM.PA <- predict(mx.PA, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Phallichthys amates/LGM")
-plot(px.LGM.PA, main='Maxent, raw values,Phallichthys amates', bty="o")
+plot(px.LGM.PA, main='Maxent, raw values, Phallichthys amates', bty="o")
 
 if (file.exists(jar)) {
 	## SSSmax was the method that varies the resampling of pseudo-absence (points) less, 
@@ -642,9 +642,9 @@ if (file.exists(jar)) {
 	e <- evaluate(p=testp, a=testa, bioclim.vars.CA)
 	e
 	px.PM = predict(mx.PM, bioclim.vars.CA, ext=ext2, overwrite=TRUE, progress='',  
-	filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Poecilia mexicana/present")
+	filename="~/PATH/TO/Poecilia mexicana/present")
 #
-	plot(px.PM, main='Maxent, raw values,Poecilia mexicana', bty="o")
+	plot(px.PM, main='Maxent, raw values, Poecilia mexicana', bty="o")
 }
 
 if (file.exists(jar)) {
@@ -659,11 +659,11 @@ if (file.exists(jar)) {
 
 # para plotar ROC 
 threshold(e)
-plot(e, 'ROC', main= "ROC plot", sub= "Poecilia mexicana",bty="o")
+plot(e, 'ROC', main= "ROC plot", sub= "Poecilia mexicana", bty="o")
 
 LGM
 px.LGM.PM <- predict(mx.PM, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Poecilia mexicana/LGM")
-plot(px.LGM.PM, main='Maxent, raw values,Poecilia mexicana', bty="o")
+plot(px.LGM.PM, main='Maxent, raw values, Poecilia mexicana', bty="o")
 
 if (file.exists(jar)) {
 	## SSSmax was the method that varies the resampling of pseudo-absence (points) less, 
@@ -677,7 +677,7 @@ if (file.exists(jar)) {
 
 LIG
 px.LIG.PM = predict(mx.PM, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Poecilia mexicana/LIG")
-plot(px.LIG.PM, main='Maxent, raw values,Poecilia mexicana', bty="o")
+plot(px.LIG.PM, main='Maxent, raw values, Poecilia mexicana', bty="o")
 
 
 if (file.exists(jar)) {
@@ -762,9 +762,9 @@ if (file.exists(jar)) {
 	e <- evaluate(p=testp, a=testa, bioclim.vars.CA)
 	e
 	px.PR = predict(mx.PR, bioclim.vars.CA, ext=ext2, overwrite=TRUE, progress='',  
-	filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Priapichthys annectens/present")
+	filename="~/PATH/TO/Priapichthys annectens/present")
 #
-	plot(px.PR, main='Maxent, raw values,Priapichthys annectens', bty="o")
+	plot(px.PR, main='Maxent, raw values, Priapichthys annectens', bty="o")
 }
 
 if (file.exists(jar)) {
@@ -783,7 +783,7 @@ plot(e, 'ROC', main= "ROC plot", sub= "Priapichthys annectens",bty="o")
 
 LGM
 px.LGM.PR <- predict(mx.PR, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Priapichthys annectens/LGM")
-plot(px.LGM.PR, main='Maxent, raw values,Priapichthys annectens', bty="o")
+plot(px.LGM.PR, main='Maxent, raw values, Priapichthys annectens', bty="o")
 
 if (file.exists(jar)) {
 	## SSSmax was the method that varies the resampling of pseudo-absence (points) less, 
@@ -797,7 +797,7 @@ if (file.exists(jar)) {
 
 LIG
 px.LIG.PR = predict(mx.PR, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Priapichthys annectens/LIG")
-plot(px.LIG.PR, main='Maxent, raw values,Priapichthys annectens', bty="o")
+plot(px.LIG.PR, main='Maxent, raw values, Priapichthys annectens', bty="o")
 
 
 if (file.exists(jar)) {
@@ -882,7 +882,7 @@ if (file.exists(jar)) {
 	e <- evaluate(p=testp, a=testa, bioclim.vars.CA)
 	e
 	px.RB = predict(mx.RB, bioclim.vars.CA, ext=ext2, overwrite=TRUE, progress='',  
-	filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Roeboides bouchellei/present")
+	filename="~/PATH/TO/Roeboides\ bouchellei/present/")
 #
 	plot(px.RB, main='Maxent, raw values,Roeboides bouchellei', bty="o")
 }
@@ -899,11 +899,11 @@ if (file.exists(jar)) {
 
 # para plotar ROC 
 threshold(e)
-plot(e, 'ROC', main= "ROC plot", sub= "Roeboides bouchellei",bty="o")
+plot(e, 'ROC', main= "ROC plot", sub="Roeboides bouchellei",bty="o")
 
 LGM
 px.LGM.RB <- predict(mx.RB, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Roeboides bouchellei/LGM")
-plot(px.LGM.RB, main='Maxent, raw values,Roeboides bouchellei', bty="o")
+plot(px.LGM.RB, main='Maxent, raw values, Roeboides bouchellei', bty="o")
 
 if (file.exists(jar)) {
 	## SSSmax was the method that varies the resampling of pseudo-absence (points) less, 
@@ -917,7 +917,7 @@ if (file.exists(jar)) {
 
 LIG
 px.LIG.RB = predict(mx.RB, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Roeboides bouchellei/LIG")
-plot(px.LIG.RB, main='Maxent, raw values,Roeboides bouchellei', bty="o")
+plot(px.LIG.RB, main='Maxent, raw values, Roeboides bouchellei', bty="o")
 
 
 if (file.exists(jar)) {
@@ -1001,7 +1001,7 @@ testa <- predict(mx.XU, avtest)
 e <- evaluate(p=testp, a=testa, bioclim.vars.CA)
 e
 px.XU = predict(mx.XU, bioclim.vars.CA, overwrite=TRUE, ext=ext2, progress='',  filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Xenophallus umbratilis/present")
-plot(px.XU, main='Maxent, raw values,Xenophallus umbratilis', bty="o")
+plot(px.XU, main='Maxent, raw values, Xenophallus umbratilis', bty="o")
 }
 
 if (file.exists(jar)) {
@@ -1017,11 +1017,11 @@ plot(1)
 
 # para plotar ROC 
 threshold(e)
-plot(e, 'ROC', main= "ROC plot", sub= "Xenophallus umbratilis",bty="o")
+plot(e, 'ROC', main= "ROC plot", sub="Xenophallus umbratilis",bty="o")
 
 LGM
 px.LGM.XU <- predict(mx.XU, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Xenophallus umbratilis/LGM")
-plot(px.LGM.XU, main='Maxent, raw values,Xenophallus umbratilis', bty="o")
+plot(px.LGM.XU, main='Maxent, raw values, Xenophallus umbratilis', bty="o")
 
 if (file.exists(jar)) {
 # SSSmax foi o metodo que varia menos a reamostragem das pseudo-ausencia, sendo um threshold mais constante (Liu et al.,2013)
@@ -1037,7 +1037,7 @@ plot(1)
 
 LIG
 px.LIG.XU = predict(mx.XU, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Xenophallus umbratilis/LIG")
-plot(px.LIG.XU, main='Maxent, raw values,Xenophallus umbratilis', bty="o")
+plot(px.LIG.XU, main='Maxent, raw values, Xenophallus umbratilis', bty="o")
 
 
 if (file.exists(jar)) {
@@ -1151,7 +1151,7 @@ if (file.exists(jar)) {
 	e <- evaluate(p=testp, a=testa, bioclim.vars.CA)
 	e
 	px.allSpp = predict(mx.allSpp, bioclim.vars.CA, overwrite=TRUE, ext=ext2, progress='',  
-	filename="C:/Users/leonardo/Desktop/Maxent/modelresult/All species/present")
+	filename="~/PATH/TO/All\_species/present/")
 #
 	plot(px.allSpp, main='Maxent, raw values, all species', bty="o")
 }

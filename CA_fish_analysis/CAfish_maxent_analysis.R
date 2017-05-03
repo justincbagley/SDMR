@@ -33,10 +33,9 @@ if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
     install.packages(setdiff(packages, rownames(installed.packages())))
 }
 
-library(sp); library(grid); library(lattice); library(maptools); library(phyloclim) # Loads dependencies ape and raster.
+library(sp); library(grid); library(lattice); library(maptools); library(phyloclim) # Loads dependencies ape and raster (but masks part of raster).
 library(dismo); library(rgdal); library(rJava);
 library(spocc); library(ENMeval);
-Maxent
 
 ###### DEFINE EXTENT OF STUDY AREA TO BE MODELED, AND LOAD GIS DATA LAYERS.
 ##--Here, we define the geographical extent of the study area, assuming that the extent is 

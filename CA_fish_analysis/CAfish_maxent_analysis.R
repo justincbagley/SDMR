@@ -194,7 +194,7 @@ plot(e, 'ROC', main= "ROC plot", sub= "Alfaro cultratus", bty="o")
 
 
 ## LIG ##
-px.LIG.AC = predict(mx.AC, paleo.LIG.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Alfaro cultratus/LIG")
+px.LIG.AC = predict(mx.AC, paleo.LIG.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="~/PATH/TO/Alfaro\_cultratus/LIG")
 plot(px.LIG.AC, main='Maxent, raw values, Alfaro cultratus', bty="o")
 
 
@@ -264,7 +264,7 @@ pres_test <- sp2[group == 1, ]		## Testing data
 system.file("java", package="dismo")
 jar <- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
 if (file.exists(jar)) {
-	mx.AM <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "C:/Users/leonardo/Desktop/Maxent/modelresult/Amatitlania spp/present")
+	mx.AM <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "~/PATH/TO/Amatitlania\_spp/present")
 	## Here, -J calls Jackknife method, -r asks if you want to 'overwrite' previous/existing results files
 	plot(mx.AM, xlab="Percentage of contribution", ylab="Abiotic variable")
 }
@@ -300,7 +300,7 @@ threshold(e)
 plot(e, 'ROC', main= "ROC plot", sub= "Amatitlania spp", bty="o")
 
 LGM
-px.LGM.AM <- predict(mx.AM, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Amatitlania spp/LGM")
+px.LGM.AM <- predict(mx.AM, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="~/PATH/TO/Amatitlania\_spp/LGM")
 plot(px.LGM.AM, main='Maxent, raw values, Amatitlania spp', bty="o")
 
 if (file.exists(jar)) {
@@ -314,7 +314,7 @@ if (file.exists(jar)) {
 }
 
 LIG
-px.LIG.AM = predict(mx.AM, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Amatitlania spp/LIG")
+px.LIG.AM = predict(mx.AM, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="~/PATH/TO/Amatitlania\_spp/LIG")
 plot(px.LIG.AM, main='Maxent, raw values, Amatitlania spp', bty="o")
 
 
@@ -384,7 +384,7 @@ pres_test <- sp3[group == 1, ]		## Testing data
 system.file("java", package="dismo")
 jar <- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
 if (file.exists(jar)) {
-	mx.AS <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "C:/Users/leonardo/Desktop/Maxent/modelresult/Astyanax spp/present")
+	mx.AS <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "~/PATH/TO/Astyanax\_spp/present")
 	## Here, -J calls Jackknife method, -r asks if you want to 'overwrite' previous/existing results files
 	plot(mx.AS, xlab="Percentage of contribution", ylab="Abiotic variable")
 }
@@ -420,7 +420,7 @@ threshold(e)
 plot(e, 'ROC', main= "ROC plot", sub= "Astyanax spp", bty="o")
 
 LGM
-px.LGM.AS <- predict(mx.AS, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Astyanax spp/LGM")
+px.LGM.AS <- predict(mx.AS, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="~/PATH/TO/Astyanax\_spp/LGM")
 plot(px.LGM.AS, main='Maxent, raw values,Astyanax spp', bty="o")
 
 if (file.exists(jar)) {
@@ -434,7 +434,7 @@ if (file.exists(jar)) {
 }
 
 LIG
-px.LIG.AS = predict(mx.AS, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Astyanax spp/LIG")
+px.LIG.AS = predict(mx.AS, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="~/PATH/TO/Astyanax\_spp/LIG")
 plot(px.LIG.AS, main='Maxent, raw values,Astyanax spp', bty="o")
 
 
@@ -504,7 +504,7 @@ pres_test <- sp4[group == 1, ]		## Testing data
 system.file("java", package="dismo")
 jar <- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
 if (file.exists(jar)) {
-	mx.PA <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "C:/Users/leonardo/Desktop/Maxent/modelresult/Phallichthys amates/present")
+	mx.PA <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "~/PATH/TO/Phallichthys\_amates/present")
 	## Here, -J calls Jackknife method, -r asks if you want to 'overwrite' previous/existing results files
 	plot(mx.PA, xlab="Percentage of contribution", ylab="Abiotic variable")
 }
@@ -540,7 +540,7 @@ threshold(e)
 plot(e, 'ROC', main= "ROC plot", sub="Phallichthys amates", bty="o")
 
 LGM
-px.LGM.PA <- predict(mx.PA, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Phallichthys amates/LGM")
+px.LGM.PA <- predict(mx.PA, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="~/PATH/TO/Phallichthys\_amates/LGM")
 plot(px.LGM.PA, main='Maxent, raw values, Phallichthys amates', bty="o")
 
 if (file.exists(jar)) {
@@ -554,7 +554,7 @@ if (file.exists(jar)) {
 }
 
 LIG
-px.LIG.PA = predict(mx.PA, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Phallichthys amates/LIG")
+px.LIG.PA = predict(mx.PA, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="~/PATH/TO/Phallichthys\_amates/LIG")
 plot(px.LIG.PA, main='Maxent, raw values, Phallichthys amates', bty="o")
 scalebar(500000, xy = c(-1500000,950000), type = 'bar', divs = 2, below = "km")
 
@@ -626,7 +626,7 @@ pres_test <- sp5[group == 1, ]		## Testing data
 system.file("java", package="dismo")
 jar <- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
 if (file.exists(jar)) {
-	mx.PM <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "C:/Users/leonardo/Desktop/Maxent/modelresult/Poecilia mexicana/present")
+	mx.PM <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "~/PATH/TO/Poecilia\_mexicana/present")
 	## Here, -J calls Jackknife method, -r asks if you want to 'overwrite' previous/existing results files
 	plot(mx.PM, xlab="Percentage of contribution", ylab="Abiotic variable")
 }
@@ -662,7 +662,7 @@ threshold(e)
 plot(e, 'ROC', main= "ROC plot", sub= "Poecilia mexicana", bty="o")
 
 LGM
-px.LGM.PM <- predict(mx.PM, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Poecilia mexicana/LGM")
+px.LGM.PM <- predict(mx.PM, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="~/PATH/TO/Poecilia\_mexicana/LGM")
 plot(px.LGM.PM, main='Maxent, raw values, Poecilia mexicana', bty="o")
 
 if (file.exists(jar)) {
@@ -676,7 +676,7 @@ if (file.exists(jar)) {
 }
 
 LIG
-px.LIG.PM = predict(mx.PM, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Poecilia mexicana/LIG")
+px.LIG.PM = predict(mx.PM, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="~/PATH/TO/Poecilia\_mexicana/LIG")
 plot(px.LIG.PM, main='Maxent, raw values, Poecilia mexicana', bty="o")
 
 
@@ -746,7 +746,7 @@ pres_test <- sp6[group == 1, ]		## Testing data
 system.file("java", package="dismo")
 jar <- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
 if (file.exists(jar)) {
-	mx.PR <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "C:/Users/leonardo/Desktop/Maxent/modelresult/Priapichthys annectens/present")
+	mx.PR <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "~/PATH/TO/Priapichthys\_annectens/present")
 	## Here, -J calls Jackknife method, -r asks if you want to 'overwrite' previous/existing results files
 	plot(mx.PR, xlab="Percentage of contribution", ylab="Abiotic variable")
 }
@@ -782,7 +782,7 @@ threshold(e)
 plot(e, 'ROC', main= "ROC plot", sub= "Priapichthys annectens",bty="o")
 
 LGM
-px.LGM.PR <- predict(mx.PR, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Priapichthys annectens/LGM")
+px.LGM.PR <- predict(mx.PR, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="~/PATH/TO/Priapichthys\_annectens/LGM")
 plot(px.LGM.PR, main='Maxent, raw values, Priapichthys annectens', bty="o")
 
 if (file.exists(jar)) {
@@ -796,7 +796,7 @@ if (file.exists(jar)) {
 }
 
 LIG
-px.LIG.PR = predict(mx.PR, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Priapichthys annectens/LIG")
+px.LIG.PR = predict(mx.PR, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="~/PATH/TO/Priapichthys\_annectens/LIG")
 plot(px.LIG.PR, main='Maxent, raw values, Priapichthys annectens', bty="o")
 
 
@@ -866,7 +866,7 @@ pres_test <- sp7[group == 1, ]		## Testing data
 system.file("java", package="dismo")
 jar <- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
 if (file.exists(jar)) {
-	mx.RB <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "C:/Users/leonardo/Desktop/Maxent/modelresult/Roeboides bouchellei/present")
+	mx.RB <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "~/PATH/TO/Roeboides\_bouchellei/present")
 	## Here, -J calls Jackknife method, -r asks if you want to 'overwrite' previous/existing results files
 	plot(mx, xlab="Percentage of contribution", ylab="Abiotic variable")
 }
@@ -902,7 +902,7 @@ threshold(e)
 plot(e, 'ROC', main= "ROC plot", sub="Roeboides bouchellei",bty="o")
 
 LGM
-px.LGM.RB <- predict(mx.RB, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Roeboides bouchellei/LGM")
+px.LGM.RB <- predict(mx.RB, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="~/PATH/TO/Roeboides\_bouchellei/LGM")
 plot(px.LGM.RB, main='Maxent, raw values, Roeboides bouchellei', bty="o")
 
 if (file.exists(jar)) {
@@ -916,7 +916,7 @@ if (file.exists(jar)) {
 }
 
 LIG
-px.LIG.RB = predict(mx.RB, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Roeboides bouchellei/LIG")
+px.LIG.RB = predict(mx.RB, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="~/PATH/TO/Roeboides\_bouchellei/LIG")
 plot(px.LIG.RB, main='Maxent, raw values, Roeboides bouchellei', bty="o")
 
 
@@ -985,7 +985,7 @@ pres_test <- sp8[group == 1, ]		## Testing data
 system.file("java", package="dismo")
 jar <- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
 if (file.exists(jar)) {
-	mx.XU <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "C:/Users/leonardo/Desktop/Maxent/modelresult/Xenophallus umbratilis/present")
+	mx.XU <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "~/PATH/TO/Xenophallus\_umbratilis/present")
 	## Here, -J calls Jackknife method, -r asks if you want to 'overwrite' previous/existing results files
 	plot(mx.XU, xlab="Percentage of contribution", ylab="Abiotic variable")
 }
@@ -1000,7 +1000,7 @@ testp <- predict(mx.XU, pvtest)
 testa <- predict(mx.XU, avtest) 
 e <- evaluate(p=testp, a=testa, bioclim.vars.CA)
 e
-px.XU = predict(mx.XU, bioclim.vars.CA, overwrite=TRUE, ext=ext2, progress='',  filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Xenophallus umbratilis/present")
+px.XU = predict(mx.XU, bioclim.vars.CA, overwrite=TRUE, ext=ext2, progress='',  filename="~/PATH/TO/Xenophallus\_umbratilis/present")
 plot(px.XU, main='Maxent, raw values, Xenophallus umbratilis', bty="o")
 }
 
@@ -1020,7 +1020,7 @@ threshold(e)
 plot(e, 'ROC', main= "ROC plot", sub="Xenophallus umbratilis",bty="o")
 
 LGM
-px.LGM.XU <- predict(mx.XU, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Xenophallus umbratilis/LGM")
+px.LGM.XU <- predict(mx.XU, paleo.LGM.CA, overwrite=TRUE, type= "prop", ext=ext2, progress='', filename="~/PATH/TO/Xenophallus\_umbratilis/LGM")
 plot(px.LGM.XU, main='Maxent, raw values, Xenophallus umbratilis', bty="o")
 
 if (file.exists(jar)) {
@@ -1036,7 +1036,7 @@ plot(1)
 }
 
 LIG
-px.LIG.XU = predict(mx.XU, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Xenophallus umbratilis/LIG")
+px.LIG.XU = predict(mx.XU, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="~/PATH/TO/Xenophallus\_umbratilis/LIG")
 plot(px.LIG.XU, main='Maxent, raw values, Xenophallus umbratilis', bty="o")
 
 
@@ -1135,7 +1135,7 @@ pres_test <- allSpp[group == 1, ]		## Testing data
 system.file("java", package="dismo")
 jar <- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
 if (file.exists(jar)) {
-	mx.allSpp <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "C:/Users/leonardo/Desktop/Maxent/modelresult/All species/present")
+	mx.allSpp <- maxent(bioclim.vars.CA, pres_train, overwrite=TRUE, args=c("-J","-r"), path= "~/PATH/TO/All\_species/present")
 	## Here, -J calls Jackknife method, -r asks if you want to 'overwrite' previous/existing results files
 	plot(mx.allSpp, xlab="Percentage of contribution", ylab="Abiotic variable")
 }
@@ -1170,7 +1170,7 @@ threshold(e)
 plot(e, 'ROC', main = "ROC plot", sub = "All species", bty="o")
 
 LGM
-px.LGM.allSpp <- predict(mx.allSpp, paleo.LGM.CA, overwrite=TRUE, type="prop", ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/All species/LGM")
+px.LGM.allSpp <- predict(mx.allSpp, paleo.LGM.CA, overwrite=TRUE, type="prop", ext=ext2, progress='', filename="~/PATH/TO/All\_species/LGM")
 plot(px.LGM.allSpp, main='Maxent, raw values, all species', bty="o")
 
 if (file.exists(jar)) {
@@ -1184,7 +1184,7 @@ if (file.exists(jar)) {
 }
 
 LIG
-px.LIG.allSpp = predict(mx.allSpp, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/All species/LIG")
+px.LIG.allSpp = predict(mx.allSpp, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="~/PATH/TO/All\_species/LIG")
 plot(px.LIG.allSpp, main='Maxent, raw values, all species', bty="o")
 
 

@@ -555,7 +555,7 @@ if (file.exists(jar)) {
 
 LIG
 px.LIG.PA = predict(mx.PA, paleo.LIG.CA, overwrite=TRUE, ext=ext2, progress='', filename="C:/Users/leonardo/Desktop/Maxent/modelresult/Phallichthys amates/LIG")
-plot(px.LIG.PA, main='Maxent, raw values,Phallichthys amates', bty="o")
+plot(px.LIG.PA, main='Maxent, raw values, Phallichthys amates', bty="o")
 scalebar(500000, xy = c(-1500000,950000), type = 'bar', divs = 2, below = "km")
 
 
@@ -882,7 +882,7 @@ if (file.exists(jar)) {
 	e <- evaluate(p=testp, a=testa, bioclim.vars.CA)
 	e
 	px.RB = predict(mx.RB, bioclim.vars.CA, ext=ext2, overwrite=TRUE, progress='',  
-	filename="~/PATH/TO/Roeboides\ bouchellei/present/")
+	filename="~/PATH/TO/Roeboides\_bouchellei/present/")
 #
 	plot(px.RB, main='Maxent, raw values,Roeboides bouchellei', bty="o")
 }
